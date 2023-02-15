@@ -32,11 +32,10 @@ def start_fight():
 @app.route("/fight/hit")
 def hit():
     if not arena.game_is_running:
-        return
-        # return render_template('fight.html', heroes=arena)
+        return render_template("index.html")
 
     arena.player_hit()
-    battle_result = "" if arena.battle_result == None else arena.battle_result
+    battle_result = "" if arena.battle_result is None else arena.battle_result
     return render_template('fight.html', heroes=arena, result=list(reversed(arena.log)), battle_result=battle_result)
 
 
@@ -46,7 +45,7 @@ def use_skill():
         return render_template('fight.html', heroes=arena)
 
     arena.player_use_skill()
-    battle_result = "" if arena.battle_result == None else arena.battle_result
+    battle_result = "" if arena.battle_result is None else arena.battle_result
     return render_template('fight.html', heroes=arena, result=list(reversed(arena.log)), battle_result=battle_result)
 
 

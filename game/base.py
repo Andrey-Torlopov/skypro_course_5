@@ -25,13 +25,13 @@ class Arena(metaclass=BaseSingleton):
         self.log: list[str] = []
 
     def _check_players_hp(self) -> None:
-        if self.player.hp > 0 and self.enemy.hp <= 0:
+        if self.player.hp > 0 >= self.enemy.hp:
             self.battle_result = "Игрок виграл битву"
             self.game_is_running = False
-        elif self.player.hp <= 0 and self.enemy.hp > 0:
+        elif self.player.hp <= 0 < self.enemy.hp:
             self.battle_result = "Игрок проиграл битву"
             self.game_is_running = False
-        elif self.player.hp <= 0 and self.enemy.hp <= 0:
+        elif self.player.hp <= 0 <= self.enemy.hp:
             self.battle_result = "Ничья"
             self.game_is_running = False
         else:
